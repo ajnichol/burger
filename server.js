@@ -8,6 +8,10 @@ var app = express();
 
 var port = 8080;
 
+app.use(express.static(process.cwd() + "/public"));
+
+app.use(methodOverride("_method"));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

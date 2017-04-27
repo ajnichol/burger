@@ -11,9 +11,9 @@ var orm = {
 
 			cb(response);        
 		});
-	};
+	},
 
-	retrieve: function(cb){
+	read: function(cb){
 		var queryString = "SELECT * FROM burgers";
 		connection.query(queryString, function(error, response){
 			if(error){
@@ -22,11 +22,12 @@ var orm = {
 
 			cb(response);
 		});
-	};
-
-	update: function(cb){
-		var queryString = "UPDATE burgers (devoured) WHERE "
 	}
+
+	// update: function(cb){
+	// 	var queryString = "UPDATE burgers (devoured) WHERE ?";
+	// 	connection.query(queryString, {devoured: })
+	// };
 };
 
 module.exports = orm;

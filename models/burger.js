@@ -6,16 +6,16 @@ var burger = {
 			console.log(response);
 			cb(response);
 		});
-	};
+	},
 
-	retrieve: function(cb){
-		orm.retrieve(function(response){
+	read: function(cb){
+		orm.read(function(response){
 			console.log(response);
 			cb(response);
 		});
-	};
+	}
 
 };
 
-module.exports = burgerObj;
+module.exports = burger;
 

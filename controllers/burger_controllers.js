@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router();
 
-var burger = require("../model/burger.js");
+var burger = require("../models/burger.js");
 
 router.post("/", function(req, res){
 	burger.create(req.body.name, function(){
@@ -11,10 +11,10 @@ router.post("/", function(req, res){
 });
 
 router.get("/", function(req, res){
-	burger.retrieve(function(data){
+	burger.read(function(data){
 		console.log(data);
 		var burgerObj = {
-			burgers: data;
+			burgers: data
 		};
 		console.log(burgerObj);
 		res.render("index", burgerObj);
