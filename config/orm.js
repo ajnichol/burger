@@ -1,13 +1,12 @@
 var connection = require("../config/connection.js");
 
 var orm = {
-	create: function(burgerName, cb){
+	create: function(newBurger, cb){
 		var queryString = "INSERT INTO burgers SET ?";
-		connection.query(queryString, {burger_name: burgerName, devoured: false}, function(error, response){
+		connection.query(queryString, {burger_name: newBurger}, function(error, response){
 			if(error){
 				console.log(error);
 			};
-			console.log(response);
 
 			cb(response);        
 		});
@@ -22,12 +21,18 @@ var orm = {
 
 			cb(response);
 		});
-	}
+	},
 
-	// update: function(cb){
-	// 	var queryString = "UPDATE burgers (devoured) WHERE ?";
-	// 	connection.query(queryString, {devoured: })
-	// };
+	update: function(columnVals, condition, cb){
+		var queryString = "UPDATE burgers SET devoured = ? WHERE ?";
+		connection.query(queryString, columnVals, condition, function(error, response){
+			if(error){
+				console.log(error);
+			}
+			console.log(queryString);
+			cb(response);
+		});
+	}
 };
 
 module.exports = orm;
